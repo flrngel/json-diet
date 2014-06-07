@@ -48,10 +48,10 @@ in `wtf_name_you_want.js`
 
 	{
 		do: 'string',
-  	re: 'string',
-  	me: { name: 'string' },
-  	fa: 'string',
-  	so: { needle: { pulling: 'number', thread: 'string' } },
-  	la: 'string',
-  	ti: { drink: { with: 'array' } }
+		re: 'string',
+		me: { name: 'string' },
+		fa: 'string',
+		so: { needle: { pulling: 'number', thread: 'string' } },
+		la: 'string',
+		ti: { drink: { with: 'array' } }
 	}
