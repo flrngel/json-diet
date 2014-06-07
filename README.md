@@ -55,3 +55,11 @@ in `wtf_name_you_want.js`
 		la: 'string',
 		ti: { drink: { with: 'array' } }
 	}
+
+## NOTE
+
+test your self. works for me.
+
+### LICENSE
+
+MIT

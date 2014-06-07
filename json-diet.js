@@ -112,7 +112,17 @@
 	 * */
 
 	if( typeof module !== 'undefined' && typeof module.exports !== "undefined" ){
+		/*
+		 * node.js implement
+		 *
+		 * */
 		module.exports=def;
+	}else if( typeof define === "function" && define.amd ){
+		/*
+		 * AMD implement
+		 *
+		 * */
+		define("json-diet",[],def);
 	}else{
 		_this.diet=def;
 	}
