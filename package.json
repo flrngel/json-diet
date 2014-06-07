@@ -1,0 +1,31 @@
+{
+  "name": "json-diet",
+  "version": "0.1.0",
+  "description": "diet you json to have only properties.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js && jshint index.js json-diet.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flrngel/json-diet"
+  },
+  "keywords": [
+    "json",
+    "properties",
+    "slim",
+    "only",
+    "checksum",
+    "hash"
+  ],
+  "author": "flrngel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flrngel/json-diet/issues"
+  },
+  "homepage": "https://github.com/flrngel/json-diet",
+  "devDependencies": {
+    "tape": "^2.13.2",
+    "jshint": "^2.5.1"
+  }
+}
