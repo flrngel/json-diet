@@ -1,5 +1,7 @@
 # json-diet
 
+![Travis](https://travis-ci.org/flrngel/json-diet.svg?branch=master)
+
 skeletonize your json object
 
 returns last elements type
