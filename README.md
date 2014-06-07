@@ -58,7 +58,7 @@ in `wtf_name_you_want.js`
 
 ## NOTE
 
-test your self. works for me.
+test yourself. works for me.
 
 # LICENSE
 
