@@ -60,6 +60,6 @@ in `wtf_name_you_want.js`
 
 test your self. works for me.
 
-### LICENSE
+# LICENSE
 
 MIT
