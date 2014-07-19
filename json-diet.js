@@ -73,7 +73,7 @@
 					}
 
 					if( hasHash === true ){
-						ret=$diet(obj[key]);
+						ret=$diet.digest(obj[key]);
 					}else{
 						ret="array";
 					}
