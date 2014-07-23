@@ -41,5 +41,8 @@ test("basic functions test",function(assert){
 		e: {}
 	});
 
+	assert.deepEqual(diet("owijefoijwef").result(),"string");
+	assert.deepEqual(diet(1234).result(),"number");
+
 	assert.end();
 });
