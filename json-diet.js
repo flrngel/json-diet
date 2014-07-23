@@ -55,6 +55,8 @@
 	var $diet=diet.prototype;
 
 	$diet.digest=function(obj){
+		if( typeof obj !== "object" ) return (typeof obj);
+		
 		var res={};
 		for(var key in obj){
 			if( obj.hasOwnProperty(key) === false ) continue;
