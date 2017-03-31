@@ -33,7 +33,7 @@ var diet=require("json-diet");
 
 ## USAGE
 
-```JSON
+```js
 diet({
   "do": "doe a deer a female deer",
   "re": "a drop of golden sun",
@@ -58,7 +58,7 @@ diet({
 
 ### USAGE RESULT
 
-```JSON
+```
 {
   do: 'string',
   re: 'string',
