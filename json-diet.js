@@ -1,131 +1,130 @@
 (function(){
-	var _this=this;
+  var _this = this;
 
-	/*
-	 * implement modules for browser
-	 *
-	 * `extend` function from "https://github.com/Raynos/xtend"
-	 *
-	 * */
+  /*
+   * implement modules for browser
+   *
+   * `extend` function from "https://github.com/Raynos/xtend"
+   *
+   * */
 
-	function extend(){
-		var target = {};
-		for (var i = 0; i < arguments.length; i++){
-			var source = arguments[i];
-			for (var key in source){
-				if( source.hasOwnProperty(key) ){
-					target[key] = source[key];
-				}
-			}
-		}
-		return target;
-	}
+  function extend(){
+    var target = {};
+    for (var i=0; i<arguments.length; i++){
+      var source = arguments[i];
+      for (var key in source){
+        if( source.hasOwnProperty(key) ){
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  }
 
-	function isEmptyObject(obj){
-		for(var key in obj){
-			if( obj.hasOwnProperty(key) === false ) continue;
-			return false;
-		}
-		return true;
-	}
+  function isEmptyObject(obj){
+    for(var key in obj){
+      if( obj.hasOwnProperty(key) === false ) continue;
+      return false;
+    }
+    return true;
+  }
 
-	/*
-	 * json-diet definition
-	 *
-	 * */
+  /*
+   * json-diet definition
+   *
+   * */
 
-	var diet,def;
+  var diet,def;
 
-	def=function(obj,opt){
-		return new diet(obj,opt);
-	};
+  def = function(obj,opt){
+    return new diet(obj,opt);
+  };
 
-	diet=function(obj,opt){
-		this.obj=obj;
-		var defaultOptions={
-		};
+  diet = function(obj,opt){
+    this.obj = obj;
+    var defaultOptions = {};
 
-		this.options=extend(defaultOptions,opt);
+    this.options = extend(defaultOptions,opt);
 
-		this.obj=$diet.digest(this.obj,this.options);
+    this.obj = $diet.digest(this.obj,this.options);
 
-		return this;
-	};
+    return this;
+  };
 
-	var $diet=diet.prototype;
+  var $diet = diet.prototype;
 
-	$diet.digest=function(obj){
-		if( typeof obj !== "object" ) return (typeof obj);
-		
-		var res={};
-		for(var key in obj){
-			if( obj.hasOwnProperty(key) === false ) continue;
+  $diet.digest = function(obj){
+    if( typeof obj !== "object" ) return (typeof obj);
 
-			if( typeof obj[key] === "object" ){
-				var ret=null;
-				if( Array.isArray(obj[key]) === true ){
-					// determine if array has hash.
-					var hasHash=false;
+    var res = {};
+    for(var key in obj){
+      if( obj.hasOwnProperty(key) === false ) continue;
 
-					for(var i in obj[key]){
-						if( typeof obj[key][i] === "object" ){
-							hasHash=true;
-							break;
-						}
-					}
+      if( typeof obj[key] === "object" ){
+        var ret = null;
+        if( Array.isArray(obj[key]) === true ){
+          // determine if array has hash.
+          var hasHash = false;
 
-					if( hasHash === true ){
-						ret=$diet.digest(obj[key]);
-					}else{
-						ret="array";
-					}
-				}else{
-					ret=$diet.digest(obj[key]);
-				}
-				res[key]=ret;
-			}else{
-				res[key]=typeof obj[key];
-			}
-		}
+          for(var i in obj[key]){
+            if( typeof obj[key][i] === "object" ){
+              hasHash = true;
+              break;
+            }
+          }
 
-		/*
-		 * return as empty object ( not using, for future options )
-		 *
-		 * if( isEmptyObject(res) === true ) return "empty object";
-		 *
-		 * */
+          if( hasHash === true ){
+            ret = $diet.digest(obj[key]);
+          }else{
+            ret = "array";
+          }
+        }else{
+          ret = $diet.digest(obj[key]);
+        }
+        res[key] = ret;
+      }else{
+        res[key] = typeof obj[key];
+      }
+    }
 
-		
-		return res;
-	};
+    /*
+     * return as empty object ( not using, for future options )
+     *
+     * if( isEmptyObject(res) === true ) return "empty object";
+     *
+     * */
 
-	$diet.overwrite=function(obj){
-		this.obj=extend(this.obj,obj);
-		return this;
-	};
 
-	$diet.result=function(){
-		return this.obj;
-	};
+    return res;
+  };
 
-	/*
-	 * check wheter if called from node.js or browser
-	 * 
-	 * */
+  $diet.overwrite = function(obj){
+    this.obj = extend(this.obj,obj);
+    return this;
+  };
 
-	if( typeof module !== 'undefined' && typeof module.exports !== "undefined" ){
-		/*
-		 * node.js implement
-		 *
-		 * */
-		module.exports=def;
-	}else if( typeof define === "function" && define.amd ){
-		/*
-		 * AMD implement
-		 *
-		 * */
-		define("json-diet",[],def);
-	}else{
-		_this.diet=def;
-	}
+  $diet.result = function(){
+    return this.obj;
+  };
+
+  /*
+   * check wheter if called from node.js or browser
+   * 
+   * */
+
+  if( typeof module !== 'undefined' && typeof module.exports !== "undefined" ){
+    /*
+     * node.js implement
+     *
+     * */
+    module.exports = def;
+  }else if( typeof define === "function" && define.amd ){
+    /*
+     * AMD implement
+     *
+     * */
+    define("json-diet",[],def);
+  }else{
+    _this.diet = def;
+  }
 })();
