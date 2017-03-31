@@ -1,7 +1,7 @@
 {
   "name": "json-diet",
   "version": "0.1.8",
-  "description": "diet you json to have only properties.",
+  "description": "Skeletonize your json",
 	"main": "json-diet.js",
   "scripts": {
     "test": "node test.js && jshint test.js json-diet.js"
